@@ -9,5 +9,7 @@ This project is a tool for library books inventory management, e-labelling and i
 
 ## Usage
 web based `
+
 // Example usage `
+
 navigate to the web hosted URL
