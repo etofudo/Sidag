@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AULLMS" Class="LmsDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ODUFOTE\SQLEXPRESS;Initial Catalog=AULLMS;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="AULLMSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Book" Member="Books">
+    <Type Name="Book">
+      <Column Name="BookID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BookCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ISBN" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Author" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BookName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Edition" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Publisher" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="YearPublished" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Book_BookPurchase" Member="BookPurchases" ThisKey="BookID" OtherKey="BookID" Type="BookPurchase" />
+      <Association Name="Book_BookRequest" Member="BookRequests" ThisKey="BookID" OtherKey="BookID" Type="BookRequest" />
+      <Association Name="Book_BookReturn" Member="BookReturns" ThisKey="BookID" OtherKey="BookID" Type="BookReturn" />
+      <Association Name="Book_BookVendor" Member="BookVendors" ThisKey="BookID" OtherKey="BookID" Type="BookVendor" />
+      <Association Name="Book_LoanBook" Member="LoanBooks" ThisKey="BookID" OtherKey="BookID" Type="LoanBook" />
+      <Association Name="BookCategory_Book" Member="BookCategory" ThisKey="BookCategoryID" OtherKey="BookCategoryID" Type="BookCategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BookCategory" Member="BookCategories">
+    <Type Name="BookCategory">
+      <Column Name="BookCategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BookCategoryDescription" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="BookCategory_Book" Member="Books" ThisKey="BookCategoryID" OtherKey="BookCategoryID" Type="Book" />
+      <Association Name="BookCategory_BookPurchase" Member="BookPurchases" ThisKey="BookCategoryID" OtherKey="BookCategoryID" Type="BookPurchase" />
+      <Association Name="BookCategory_BookRequest" Member="BookRequests" ThisKey="BookCategoryID" OtherKey="BookCategoryID" Type="BookRequest" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BookPurchase" Member="BookPurchases">
+    <Type Name="BookPurchase">
+      <Column Name="BookPurchaseID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookPricePaid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookPriceLeft" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoOfBookPurchased" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookVendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearPublished" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="BookCategory_BookPurchase" Member="BookCategory" ThisKey="BookCategoryID" OtherKey="BookCategoryID" Type="BookCategory" IsForeignKey="true" />
+      <Association Name="Book_BookPurchase" Member="Book" ThisKey="BookID" OtherKey="BookID" Type="Book" IsForeignKey="true" />
+      <Association Name="BookVendor_BookPurchase" Member="BookVendor" ThisKey="BookVendorID" OtherKey="BookVendorID" Type="BookVendor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BookRequest" Member="BookRequests">
+    <Type Name="BookRequest">
+      <Column Name="BookRequestID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookRequestType" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="BookRequestDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NoOfBookRequest" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="BookCategory_BookRequest" Member="BookCategory" ThisKey="BookCategoryID" OtherKey="BookCategoryID" Type="BookCategory" IsForeignKey="true" />
+      <Association Name="Book_BookRequest" Member="Book" ThisKey="BookID" OtherKey="BookID" Type="Book" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BookReturn" Member="BookReturns">
+    <Type Name="BookReturn">
+      <Column Name="BookReturnID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LibUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LoanBookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReturnDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RetStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Book_BookReturn" Member="Book" ThisKey="BookID" OtherKey="BookID" Type="Book" IsForeignKey="true" />
+      <Association Name="LoanBook_BookReturn" Member="LoanBook" ThisKey="LoanBookID" OtherKey="LoanBookID" Type="LoanBook" IsForeignKey="true" />
+      <Association Name="LibUser_BookReturn" Member="LibUser" ThisKey="LibUserID" OtherKey="LibUserID" Type="LibUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BookShelf" Member="BookShelfs">
+    <Type Name="BookShelf">
+      <Column Name="BookShelfID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BkShelfName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ShelfCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ShelfCategory_BookShelf" Member="ShelfCategory" ThisKey="ShelfCategoryID" OtherKey="ShelfCategoryID" Type="ShelfCategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BookVendor" Member="BookVendors">
+    <Type Name="BookVendor">
+      <Column Name="BookVendorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VendName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VendAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoOfBookSupplied" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="BookVendor_BookPurchase" Member="BookPurchases" ThisKey="BookVendorID" OtherKey="BookVendorID" Type="BookPurchase" />
+      <Association Name="Book_BookVendor" Member="Book" ThisKey="BookID" OtherKey="BookID" Type="Book" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Department" Member="Departments">
+    <Type Name="Department">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DeptName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Department_LibUser" Member="LibUsers" ThisKey="UserID" OtherKey="DepartmentID" Type="LibUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemCategory" Member="ItemCategories">
+    <Type Name="ItemCategory">
+      <Column Name="ItemCategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemCategoryDescription" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ItemCategory_OtherItem" Member="OtherItems" ThisKey="ItemCategoryID" OtherKey="ItemCategoryID" Type="OtherItem" />
+      <Association Name="ItemCategory_OtherItemsPurchase" Member="OtherItemsPurchases" ThisKey="ItemCategoryID" OtherKey="ItemCategoryID" Type="OtherItemsPurchase" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Library" Member="Libraries">
+    <Type Name="Library">
+      <Column Name="LibraryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LibraryName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LibraryNews" Member="LibraryNews">
+    <Type Name="LibraryNew">
+      <Column Name="LibraryNewsID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NewsTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NewsDate" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Author" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LibraryStudentClerance" Member="LibraryStudentClerances">
+    <Type Name="LibraryStudentClerance">
+      <Column Name="LibraryStudedntCleranceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MatriculationNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClearedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="LibUser_LibraryStudentClerance" Member="LibUser" ThisKey="MatriculationNumber" OtherKey="LibUserID" Type="LibUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoanBook" Member="LoanBooks">
+    <Type Name="LoanBook">
+      <Column Name="LoanBookID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LibUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BkStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Fine" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoanDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ReturnDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DueDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Approvedby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="LoanBook_BookReturn" Member="BookReturns" ThisKey="LoanBookID" OtherKey="LoanBookID" Type="BookReturn" />
+      <Association Name="LoanBook_LoanPenalty" Member="LoanPenalties" ThisKey="LoanBookID" OtherKey="LoanBookID" Type="LoanPenalty" />
+      <Association Name="Book_LoanBook" Member="Book" ThisKey="BookID" OtherKey="BookID" Type="Book" IsForeignKey="true" />
+      <Association Name="LibUser_LoanBook" Member="LibUser" ThisKey="LibUserID" OtherKey="LibUserID" Type="LibUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoanPenalty" Member="LoanPenalties">
+    <Type Name="LoanPenalty">
+      <Column Name="LoanPenaltyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoanBookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PenStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LoanPenaltyDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TotalFine" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="LoanBook_LoanPenalty" Member="LoanBook" ThisKey="LoanBookID" OtherKey="LoanBookID" Type="LoanBook" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OtherItems" Member="OtherItems">
+    <Type Name="OtherItem">
+      <Column Name="OtherItemsID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemAuthor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ItemType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="YearPublished" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="OtherItem_OtherItemsPurchase" Member="OtherItemsPurchases" ThisKey="OtherItemsID" OtherKey="OtherItemsID" Type="OtherItemsPurchase" />
+      <Association Name="ItemCategory_OtherItem" Member="ItemCategory" ThisKey="ItemCategoryID" OtherKey="ItemCategoryID" Type="ItemCategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OtherItemsPurchase" Member="OtherItemsPurchases">
+    <Type Name="OtherItemsPurchase">
+      <Column Name="OtherItemsPurchaseID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OtherItemsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemPricePaid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemPriceLeft" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoOfItemPurchased" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearPublished" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ItemCategory_OtherItemsPurchase" Member="ItemCategory" ThisKey="ItemCategoryID" OtherKey="ItemCategoryID" Type="ItemCategory" IsForeignKey="true" />
+      <Association Name="OtherItem_OtherItemsPurchase" Member="OtherItem" ThisKey="OtherItemsID" OtherKey="OtherItemsID" Type="OtherItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Publication" Member="Publications">
+    <Type Name="Publication">
+      <Column Name="PublicationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PublicationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PublicationYear" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PublicationAuthor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublicationDetails" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Roles">
+    <Type Name="Role">
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Role_LibUser" Member="LibUsers" ThisKey="RoleID" OtherKey="RoleID" Type="LibUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SendMessage" Member="SendMessages">
+    <Type Name="SendMessage">
+      <Column Name="SendMessageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ReceiverName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MessageToSend" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="MessageDate" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ShelfCategory" Member="ShelfCategories">
+    <Type Name="ShelfCategory">
+      <Column Name="ShelfCategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ShelfCategory_BookShelf" Member="BookShelfs" ThisKey="ShelfCategoryID" OtherKey="ShelfCategoryID" Type="BookShelf" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StudentProjectTopic" Member="StudentProjectTopics">
+    <Type Name="StudentProjectTopic">
+      <Column Name="StudentProjectTopicID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectYear" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectDetails" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.usercategory" Member="usercategories">
+    <Type Name="usercategory">
+      <Column Name="UserCategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserCategoryName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="usercategory_LibUser" Member="LibUsers" ThisKey="UserCategoryID" OtherKey="UserCategoryID" Type="LibUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PastQuestion" Member="PastQuestions">
+    <Type Name="PastQuestion">
+      <Column Name="PastQuestionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PastQuestionCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PastQuestionType" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QuestionDesc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PastQuestionYear" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PastQuestionDetails" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LibUser" Member="LibUsers">
+    <Type Name="LibUser">
+      <Column Name="LibUserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MatriculationNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StaffID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Passwd" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Createdby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleNm" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="LibUser_BookReturn" Member="BookReturns" ThisKey="LibUserID" OtherKey="LibUserID" Type="BookReturn" />
+      <Association Name="LibUser_LibraryStudentClerance" Member="LibraryStudentClerances" ThisKey="LibUserID" OtherKey="MatriculationNumber" Type="LibraryStudentClerance" />
+      <Association Name="LibUser_LoanBook" Member="LoanBooks" ThisKey="LibUserID" OtherKey="LibUserID" Type="LoanBook" />
+      <Association Name="Department_LibUser" Member="Department" ThisKey="DepartmentID" OtherKey="UserID" Type="Department" IsForeignKey="true" />
+      <Association Name="Role_LibUser" Member="Role" ThisKey="RoleID" OtherKey="RoleID" Type="Role" IsForeignKey="true" />
+      <Association Name="usercategory_LibUser" Member="usercategory" ThisKey="UserCategoryID" OtherKey="UserCategoryID" Type="usercategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

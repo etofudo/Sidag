@@ -1,0 +1,135 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="StfMasterPage.master.cs" Inherits="StfMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" href="../favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+    
+    <title>AUL Library</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all"/>
+    <style type="text/css">
+        .auto-style2 {
+            width: 250px;
+            height: 133px;
+        }
+        .auto-style4 {
+
+        }
+        .auto-style4 > a {
+            display:block;
+            width: 200px;
+            height: 40px;
+            text-wrap:none;
+            overflow:hidden;
+            overflow-wrap:normal;
+            border-bottom:0.5px groove #40404a;
+            background-color:#454545;
+            padding:7px 14px 7px 14px;
+         }
+            .auto-style4 > a:hover {
+                color:#ffffff;
+                background-color:#656565;
+            }
+        .auto-style5 {
+            width: 229px;
+            height:100%;
+            float: left;
+            margin-right: 0px;
+            border-right:10px inset #75aB54;
+            margin-bottom:0px;
+        }
+        
+    </style>
+</head>
+<body id="top">
+<div class="wrapper row1" style="background-color:#ffffff;">
+  <header id="header" class="hoc clear"> 
+    <div id="logo" class="fl_left">
+      <h1 id="aidMi" style="font-size:39px;color:#75aB54;">
+          <img alt="anchorLogo" class="auto-style2" longdesc="http://localhost:52699/anchor_logo.png" src="anchor_logo.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANCHOR&nbsp; UNIVERSITY&nbsp; LIBRARY</h1>
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+  </header>
+</div>
+    <div class="wrapper row2">
+  <nav id="mainav" class="hoc clear"> 
+    <ul class="clear">
+      <li class=""><a href="homepg.aspx">Home</a></li>
+      <li class=""><a href="profilepg.aspx">User Profile</a></li>
+        <li>
+          <ul>
+              <li><a href="bookaddpg.aspx">Add Book</a></li>
+              <li><a href="abkcalvewpg.aspx">View Book Categories</a></li>
+              <li><a href="pastquestionadd.aspx">Add Past Questions</a></li>
+              <li><a href="publicationadd.aspx">Add Publication</a></li>
+            </ul>
+        </li>
+      <li><a class="drop" href="#">admin</a>
+        <ul>
+          <li><a href="bookloanaddpg.aspx"> Loan Book</a></li>
+          <li><a href="bookreturnaddpg.aspx">Return Book</a></li>
+          <li><a href="sendmessageadd.aspx">Send Message</a></li>
+          <li><a href="#">View Lists</a>
+        <ul>
+          <li><a class="drop" href="#">Users and Books</a>
+            <ul>
+              <li><a href="userview.aspx">List of Registered Users</a></li>
+              <li><a href="bookviewpg.aspx">List of Registered Books</a></li>
+              <li><a href="clearedstudent">List of Cleared Students</a></li>
+            </ul>
+          </li>
+        </ul>
+          </li>
+          
+
+          
+        </ul>
+      </li><li>
+        <a href="homepg.aspx">Log Out</a></li>
+    </ul>
+      
+    </nav>
+</div>
+<div>
+<div style="background:#454545;padding:0px 0px 0px 0px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;" class="auto-style5">
+    <ul id="temi" style="list-style:none;margin:0px 0px 0px 0px;background:#252B34;padding:0px 0px 0px 0px;">
+    <li><img src="ano.png" id="moni" style="width:200px;height:195px;border:hidden; border-radius:70px 70px; overflow:hidden"/></li>
+
+          <li class="auto-style4"><a href="bookaddpg.aspx">Add Book</a></li>
+          <li class="auto-style4"><a href="bookcataddpg.aspx">Add Book Category</a></li>
+          <li class="auto-style4"><a href="bookpurchaseadd.aspx">Register Book Purchase</a></li>
+          <li class="auto-style4"><a href="studentclearanceverification.aspx">Student Clearance</a></li>
+          <li class="auto-style4"><a href="bookshelfaddpg.aspx">Add Book Shelf</a></li>
+          <li class="auto-style4"><a href="bookvendoraddpg.aspx">Add Book Vendor</a></li>
+          <li class="auto-style4"><a href="departmentaddpg.aspx">Add Department</a></li>
+        <li class="auto-style4"><a href="upastquestionadd.aspx">Add Past Questions</a></li>
+          <li class="auto-style4"><a href="otheritemsdepartmentaddpg.aspx">Add Non-Book Items</a></li>
+          <li class="auto-style4"><a href="librarynews.aspx">Add Library News</a></li>
+              <li class="auto-style4"><a href="userview.aspx">List of Registered Users</a></li>
+              <li class="auto-style4"><a href="bookviewpg.aspx">List of Registered Books</a></li>
+
+
+
+          
+    </ul>
+</div>
+
+        <div style="margin-left:229px;margin-bottom:0px;border-bottom:10px inset #75aB54; vertical-align:top;background-color:white">
+            
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                
+            </div>
+    </div>
+
+    </body>
+</html>
