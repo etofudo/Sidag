@@ -8,6 +8,6 @@ This project is a tool for library books inventory management, e-labelling and i
 2. Install dependencies: `npm install`
 
 ## Usage
-web based\n
-// Example usage\n
+web based `
+// Example usage `
 navigate to the web hosted URL
